@@ -20,6 +20,13 @@ You can install the dependencies by running:
 ```bash
 pip install numpy scipy
 
+Usage
+
+The primary function in this repository is perform_eof_analysis(). Below is a breakdown of its inputs and outputs.
+Function: perform_eof_analysis
+
+python
+
 def perform_eof_analysis(dat, lati, loni, flag=2, nmodes=10):
     """
     Perform EOF analysis on the provided dataset.
@@ -47,7 +54,9 @@ def perform_eof_analysis(dat, lati, loni, flag=2, nmodes=10):
         The North et al. criterion values for the first nmodes.
     """
 
-## example
+Example
+
+python
 
 import numpy as np
 from eof_analysis import perform_eof_analysis
@@ -66,3 +75,22 @@ print("Principal component time series (scores):", score)
 print("Eigenvalues (latent):", latent)
 print("EOF loading patterns:", loading)
 print("North criterion results:", north)
+
+Repository Contents
+
+    eof_analysis.py: Contains the main perform_eof_analysis function for EOF analysis.
+    README.md: This readme file explaining the code and usage.
+    LICENSE: The repository license (MIT License by default).
+
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Happy EOF-ing!
+
+sql
+
+
+You can copy this content into your `README.md` file in your local repository. Let me know if you need further help!
+
+

@@ -19,3 +19,50 @@ You can install the dependencies by running:
 
 ```bash
 pip install numpy scipy
+
+def perform_eof_analysis(dat, lati, loni, flag=2, nmodes=10):
+    """
+    Perform EOF analysis on the provided dataset.
+
+    Parameters:
+    dat: np.ndarray
+        The 3D dataset to analyze, with dimensions [time, lat, lon].
+    lati: np.ndarray
+        The latitude array corresponding to the dataset's grid.
+    loni: np.ndarray
+        The longitude array corresponding to the dataset's grid.
+    flag: int, optional (default=2)
+        Determines whether to perform PCA on the covariance matrix (flag=1) or on the correlation matrix (flag=2).
+    nmodes: int, optional (default=10)
+        The number of principal components (PCs) or EOF modes to calculate.
+
+    Returns:
+    score: np.ndarray
+        The time series of each PC in a column.
+    latent: np.ndarray
+        The eigenvalue of each PC normalized to sum to 1.
+    loading: np.ndarray
+        The loading matrix of EOFs, with shape [nmodes, nlat, nlon].
+    north: np.ndarray
+        The North et al. criterion values for the first nmodes.
+    """
+
+## example
+
+import numpy as np
+from eof_analysis import perform_eof_analysis
+
+# Example data: a 3D numpy array of shape [time, lat, lon]
+# Replace this with your actual dataset
+dat = np.random.rand(100, 20, 30)  # e.g., 100 time steps, 20 latitudes, 30 longitudes
+lati = np.linspace(-90, 90, 20)  # 20 latitude points
+loni = np.linspace(0, 360, 30)   # 30 longitude points
+
+# Perform EOF analysis
+score, latent, loading, north = perform_eof_analysis(dat, lati, loni)
+
+# View results
+print("Principal component time series (scores):", score)
+print("Eigenvalues (latent):", latent)
+print("EOF loading patterns:", loading)
+print("North criterion results:", north)
